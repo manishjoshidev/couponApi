@@ -2,6 +2,9 @@ package com.example.couponapi.binding;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "course_details")
 public class Course {
@@ -15,6 +18,8 @@ public class Course {
 
     private double price;
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Coupon> coupons = new ArrayList<>();
     // Getters and Setters
     public Long getId() {
         return id;

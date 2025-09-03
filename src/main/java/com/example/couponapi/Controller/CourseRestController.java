@@ -1,4 +1,4 @@
-package com.example.couponapi.controller;
+package com.example.couponapi.Controller;
 
 import com.example.couponapi.binding.Course;
 import com.example.couponapi.service.CourseService;

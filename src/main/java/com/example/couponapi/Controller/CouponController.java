@@ -1,4 +1,4 @@
-package com.example.couponapi.controller;
+package com.example.couponapi.Controller;
 
 import com.example.couponapi.binding.Coupon;
 import com.example.couponapi.service.CouponPricingService;
@@ -29,7 +29,7 @@ public class CouponController {
 
     // Get by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Coupon> getCoupon(@PathVariable Integer id) {
+    public ResponseEntity<Coupon> getCoupon(@PathVariable Long id) {
         Coupon coupon = couponService.getById(id);
         if (coupon != null) {
             return new ResponseEntity<>(coupon, HttpStatus.OK);
@@ -46,7 +46,7 @@ public class CouponController {
 
     // Update existing
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateCoupon(@PathVariable Integer id, @RequestBody Coupon coupon) {
+    public ResponseEntity<String> updateCoupon(@PathVariable Long id, @RequestBody Coupon coupon) {
         coupon.setId(id);
         String status = couponService.upsert(coupon);
         return new ResponseEntity<>(status, HttpStatus.OK);
@@ -68,7 +68,7 @@ public class CouponController {
 
     // Delete
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCoupon(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteCoupon(@PathVariable Long id) {
         String status = couponService.deleteById(id);
         return new ResponseEntity<>(status, HttpStatus.OK);
     }

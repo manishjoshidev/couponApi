@@ -24,7 +24,7 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public Coupon getById(Integer id) {
+    public Coupon getById(Long id) {
         Optional<Coupon> optionalCoupon = couponRepository.findById(id);
         return optionalCoupon.orElse(null);
     }
@@ -35,7 +35,7 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public String deleteById(Integer id) {
+    public String deleteById(Long id) {
         if (couponRepository.existsById(id)) {
             couponRepository.deleteById(id);
             return "Coupon deleted successfully";

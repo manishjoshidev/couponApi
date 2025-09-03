@@ -11,11 +11,12 @@ public class Coupon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     @NotBlank(message = "Coupon code is required")
     private String code; // Unique coupon code
+
 
     @NotBlank(message = "Coupon type is required")
     private String type;  // cart-wise, product-wise, bxgy
@@ -28,9 +29,13 @@ public class Coupon {
 
     private boolean active = true;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = true)
+    private Course course;
+
     // Getters and Setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getCode() { return code; }
     public void setCode(String code) { this.code = code; }

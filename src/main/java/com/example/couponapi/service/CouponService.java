@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CouponService {
     String upsert(Coupon coupon);
-    Coupon getById(Integer id);
+    Coupon getById(Long id);
     List<Coupon> getAll();
-    String deleteById(Integer id);
+    String deleteById(Long id);
     Coupon findByCode(String code);
 
 }
